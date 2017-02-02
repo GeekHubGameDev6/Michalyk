@@ -1,4 +1,4 @@
-# MikhailikAlexandrGeekhub
+# Mikhailik
 Biplanes
 
 Theme / Setting / Genre
