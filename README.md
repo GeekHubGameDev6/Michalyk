@@ -13,7 +13,8 @@ Targeted platforms
 Monetization model (Brief/Document) 
 - Freeware
 
-Project Scope 
+Project Scope
+
 Game Time Scale
 - Two month development.
 Core Team
@@ -26,6 +27,7 @@ What sets this project apart?
 - “Low-weight” game;
 - Realistic physics;
 - Clear sound effects.
+
 Core Gameplay Mechanics (Detailed):
 - Player can shoot the enemies pressing the button on the screen and handle the biplane by virtual joystick. While time is up, player achieves summary points.
 
