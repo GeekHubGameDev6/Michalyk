@@ -15,10 +15,9 @@ Targeted platforms
 Monetization model 
 - Freeware
 
-Project Scope
-
 Game Time Scale
 - Two month development.
+
 Core Team
 - Mikhailik Alexandr (Developer).
 
