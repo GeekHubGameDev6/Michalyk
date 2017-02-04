@@ -19,6 +19,7 @@ Game Time Scale
 - Two month development.
 Core Team
 - Mikhailik Alexandr (Developer).
+
 Project Description (Brief):
 - Game for a mobile platform, core platform is Windows Phone, additional support for Android and maybe IOS. The main theme of game is to achieve points during the time-attack. Player equipped with his own armored biplane and hands and evil army of enemies flying to capture the world.
 
