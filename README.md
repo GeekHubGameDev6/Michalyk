@@ -3,14 +3,16 @@ Biplanes
 
 Theme / Setting / Genre
 - Arcade
+
 Core Gameplay Mechanics Brief
 - Time-attack
+
 Targeted platforms
 - Windows Phone
 - Android
 - IOS (?)
 
-Monetization model (Brief/Document) 
+Monetization model 
 - Freeware
 
 Project Scope
@@ -29,7 +31,7 @@ What sets this project apart?
 - Realistic physics;
 - Clear sound effects.
 
-Core Gameplay Mechanics (Detailed):
+Core Gameplay Mechanics:
 - Player can shoot the enemies pressing the button on the screen and handle the biplane by virtual joystick. While time is up, player achieves summary points.
 
 Gameplay
