@@ -2,18 +2,18 @@
 Biplanes
 
 Theme / Setting / Genre
-- Arcade
+- Arcade.
 
 Core Gameplay Mechanics Brief
-- Time-attack
+- Time-attack.
 
 Targeted platforms
-- Windows Phone
-- Android
-- IOS (?)
+- Windows Phone;
+- Android;
+- IOS (?).
 
 Monetization model 
-- Freeware
+- Freeware.
 
 Game Time Scale
 - Two month development.
