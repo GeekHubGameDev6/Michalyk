@@ -5,7 +5,7 @@ Theme / Setting / Genre
 - Arcade.
 
 Core Gameplay Mechanics Brief
-- Time-attack.
+- Time-attack, Endless mode.
 
 Targeted platforms
 - Windows Phone;
