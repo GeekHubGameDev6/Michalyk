@@ -14,8 +14,10 @@ public class PlaneShooted : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        
+
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -35,4 +37,6 @@ public class PlaneShooted : MonoBehaviour
             Debug.Log("Shot!");
         }
     }
+
+
 }
