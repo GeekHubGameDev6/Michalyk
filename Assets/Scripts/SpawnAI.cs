@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SpawnAI : MonoBehaviour
 {
-
     public Rigidbody2D SpawnEnemy;
+
+    public float timer = 3.0f;
+
+    private bool flag = true;
 
     private GameObject[] target;
 
-    // Use this for initialization
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -23,19 +24,47 @@ public class SpawnAI : MonoBehaviour
 
     void spawn()
     {
-        {
-            var position = new Vector3(Random.Range(7, 11), Random.Range(-4.0f, 4.0f), 0);
-            Rigidbody2D spawn = Instantiate(SpawnEnemy, position, transform.rotation);
-            spawn.velocity = transform.TransformDirection(new Vector3(0, 0, 0));
-        }
+        
+        var position = new Vector3(Random.Range(9.0f, 20.0f), Random.Range(-4.0f, 4.4f), 0);
+        Rigidbody2D spawn = Instantiate(SpawnEnemy, position, transform.rotation);
+        spawn.velocity = transform.TransformDirection(new Vector3(0, 0, 0));
     }
 
     void Find()
     {
-        target = GameObject.FindGameObjectsWithTag("enemy");
-        if (target.Length < 5)
+        if (flag)
         {
-            spawn();
+            target = GameObject.FindGameObjectsWithTag("enemy");
+            if (target.Length < 8)
+            {
+                spawn();
+            }
+        }
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "enemyTRIGGER")
+        {
+            Destroy(SpawnEnemy.gameObject);
+            flag = false;
+        }
+    }
+    void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "enemyTRIGGER")
+        {
+            Destroy(SpawnEnemy.gameObject);
+            flag = false;
+        }
+    }
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "enemyTRIGGER")
+        {
+            Destroy(SpawnEnemy.gameObject);
+            flag = true;
         }
     }
 }

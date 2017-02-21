@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class EnemyBulletShoot : MonoBehaviour
 {
-    public Rigidbody2D bullet;
-    public float speed = 1;
+    public Rigidbody2D EnemyBullet;
+    public float speed = 20;
 
     public float timer = 3.0f;
     private bool flag = true;
-    // Use this for initialization
+
     void Start () {
 		
 	}
@@ -23,13 +23,12 @@ public class EnemyBulletShoot : MonoBehaviour
         {
             flag = false;
             timerEnded();
-            
         }
     }
 
     void timerEnded()
     {
-        Rigidbody2D fire = Instantiate(bullet, transform.position, transform.rotation);
+        Rigidbody2D fire = Instantiate(EnemyBullet, transform.position, transform.rotation);
         fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
         Destroy(fire.gameObject, 0.8f);
         timer = 3.0f;
