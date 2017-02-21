@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyBulletShoot : MonoBehaviour {
-
+public class EnemyBulletShoot : MonoBehaviour
+{
     public Rigidbody2D bullet;
     public float speed = 1;
 
@@ -14,11 +14,9 @@ public class EnemyBulletShoot : MonoBehaviour {
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
+
 	void FixedUpdate ()
     {
-
         timer -= Time.deltaTime;
 
         if (timer <= 0.0f && flag)

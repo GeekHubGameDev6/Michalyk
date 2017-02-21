@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BulletShoot : MonoBehaviour
 {
+
+    
     public Rigidbody2D bullet;
     public float speed = 1;
     public Button Fire;

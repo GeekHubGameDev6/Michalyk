@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PlaneShooted : MonoBehaviour
 {
+
+    public HealthBar hit;
+
     public GameObject bullet;
-    // Use this for initialization
+
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -22,6 +23,15 @@ public class PlaneShooted : MonoBehaviour
         if (coll.gameObject.tag == "enemy")
         {
             Destroy(bullet);
+            Debug.Log("Shot!");
+        }
+    }
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Player")
+        {
+            Destroy(bullet);
+            hit.DecreaseHealth();
             Debug.Log("Shot!");
         }
     }
