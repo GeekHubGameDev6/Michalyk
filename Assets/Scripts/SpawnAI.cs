@@ -25,7 +25,7 @@ public class SpawnAI : MonoBehaviour
     void spawn()
     {
         
-        var position = new Vector3(Random.Range(9.0f, 20.0f), Random.Range(-4.0f, 4.4f), 0);
+        var position = new Vector3(Random.Range(9.0f, 20.0f), Random.Range(-4.0f, 4.0f), 0);
         Rigidbody2D spawn = Instantiate(SpawnEnemy, position, transform.rotation);
         spawn.velocity = transform.TransformDirection(new Vector3(0, 0, 0));
     }

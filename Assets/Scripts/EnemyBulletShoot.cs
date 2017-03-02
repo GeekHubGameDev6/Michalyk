@@ -8,7 +8,7 @@ public class EnemyBulletShoot : MonoBehaviour
     public Rigidbody2D EnemyBullet;
     public float speed = 20;
 
-    public float timer = 3.0f;
+    public float timer = 4.0f;
     private bool flag = true;
 
     void Start () {
@@ -31,7 +31,7 @@ public class EnemyBulletShoot : MonoBehaviour
         Rigidbody2D fire = Instantiate(EnemyBullet, transform.position, transform.rotation);
         fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
         Destroy(fire.gameObject, 0.8f);
-        timer = 3.0f;
+        timer = Random.Range(3.0f,5.0f);
         flag = true;
     }
 }
