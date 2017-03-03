@@ -25,5 +25,9 @@ public class EnemyHitPlayer: MonoBehaviour {
             hit.DecreaseHealth();
             Debug.Log("You have been shot!");
         }
+        if (coll.gameObject.tag == "Wall")
+        {
+            Destroy(EnemyBullet.gameObject);
+        }
     }
 }
