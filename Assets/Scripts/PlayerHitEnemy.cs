@@ -23,5 +23,17 @@ public class PlayerHitEnemy : MonoBehaviour
             Destroy(Bullet.gameObject);
             Debug.Log("Shot!");
         }
+        if(coll.gameObject.tag == "Wall")
+        {
+            Destroy(Bullet.gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Wall")
+        {
+            Destroy(Bullet.gameObject);
+        }
     }
 }
