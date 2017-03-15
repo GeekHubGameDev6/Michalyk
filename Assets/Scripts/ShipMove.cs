@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShipMove : MonoBehaviour
 {
-
     public GameObject player;
     public GameObject ship;
 	// Use this for initialization
@@ -22,7 +21,7 @@ public class ShipMove : MonoBehaviour
 
 	    if (ship.transform.position.y < -5.0f)
 	    {
-	        Destroy(ship.gameObject);
-	    }
+           ship.GetComponent<Transform>().position = new Vector2(-8f,-6f);
+        }
 	}
 }

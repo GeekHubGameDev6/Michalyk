@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHitsTheFloor : MonoBehaviour
 {
     public GameObject player;
-
+    public GameObject ship;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,8 +18,13 @@ public class PlayerHitsTheFloor : MonoBehaviour
     {
         if (coll.gameObject.tag == "Floor")
         {
-            Destroy(player.gameObject);
+            ship.GetComponent<Transform>().position = new Vector2(-5.27f, -4.27f);
+            var rotationVector = player.transform.rotation.eulerAngles;
+            rotationVector.z = 12.107f;
+            player.transform.rotation = Quaternion.Euler(rotationVector);
+            player.GetComponent<Transform>().position = new Vector3(-5.594f, -3.958f);
             Debug.Log("Player killed himself");
+            
         }
     }
 }

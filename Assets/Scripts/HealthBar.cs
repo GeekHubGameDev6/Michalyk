@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+
+    public GameObject ship;
+    public GameObject player;
     public GameObject healthbar;
     public float Health = 100f;
     public float curHealth;
-	// Use this for initialization
-	void Start ()
+
+    public GameObject Lives3;
+    public GameObject Lives2;
+    public GameObject Lives1;
+
+    // Use this for initialization
+    void Start ()
 	{
 	    curHealth = Health;
 	}
@@ -16,8 +24,6 @@ public class HealthBar : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        
-
     }
 
     void SetHealthBar(float myHealth)
@@ -40,6 +46,12 @@ public class HealthBar : MonoBehaviour
 
     void PlayerKilled()
     {
+        ship.GetComponent<Transform>().position = new Vector2(-5.27f, -4.27f);
         Debug.Log("Player Killed!");
+        var rotationVector = player.transform.rotation.eulerAngles;
+        rotationVector.z = 12.107f;
+        player.transform.rotation = Quaternion.Euler(rotationVector);
+        player.GetComponent<Transform>().position = new Vector3(-5.594f, -3.958f);
+        
     }
 }

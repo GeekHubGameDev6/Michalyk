@@ -16,7 +16,7 @@ public class BackgroundMove : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	    float y = -player.GetComponent<Transform>().localPosition.y+0.1f;
+        float y = -player.GetComponent<Transform>().localPosition.y + 0.1f;
         float x = background.GetComponent<Transform>().localPosition.x;
         background.transform.localPosition = new Vector3(x, y, 1);
         background.GetComponent<Transform>().Translate(Vector3.left * Time.deltaTime * speedMultiplier);

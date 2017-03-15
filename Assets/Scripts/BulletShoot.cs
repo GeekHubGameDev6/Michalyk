@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Experimental.Director;
 using UnityEngine.UI;
 
 public class BulletShoot : MonoBehaviour
@@ -11,7 +12,13 @@ public class BulletShoot : MonoBehaviour
     public GameObject bar3;
     public GameObject bar4;
     public GameObject bar5;
+
+    public GameObject BWR;
+
     public GameObject reloading;
+
+    public Text TextAnimation;
+    public GameObject AmmoBar;
 
     public Rigidbody2D bullet;
     public float speed = 1;
@@ -63,6 +70,9 @@ public class BulletShoot : MonoBehaviour
     void timerEnded()
     {
         reloading.SetActive(false);
+        BWR.SetActive(false);
+        TextAnimation.GetComponent<Text>().text = "Ready";
+        TextAnimation.GetComponent<Animation>().Play();
         bar5.SetActive(true);
         ReloadTimer = 4.0f;
         flag = false;
@@ -91,29 +101,41 @@ public class BulletShoot : MonoBehaviour
 
 	        if (bar5.activeSelf)
 	        {
+                
                 bar4.SetActive(true);
                 bar5.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar4.activeSelf)
             {
+                
                 bar3.SetActive(true);
                 bar4.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar3.activeSelf)
             {
+                
                 bar2.SetActive(true);
                 bar3.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar2.activeSelf)
             {
+                
                 bar1.SetActive(true);
                 bar2.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar1.activeSelf)
 	        {
-	            flag = true;
+                BWR.SetActive(true);
+                flag = true;
                 bar1.SetActive(false);
                 reloading.SetActive(true);
+	            TextAnimation.GetComponent<Text>().text = "Reloading";
+	            TextAnimation.GetComponent<Animation>().Play();
+                AmmoBar.GetComponent<Animation>().Play();
             }
         }
     }
