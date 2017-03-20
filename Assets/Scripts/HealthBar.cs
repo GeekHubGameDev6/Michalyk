@@ -15,6 +15,7 @@ public class HealthBar : MonoBehaviour
     public float Health = 100f;
     public float curHealth;
 
+    public GameObject LivesBar;
 
     public GameObject Lives3;
     public GameObject Lives2;
@@ -70,18 +71,22 @@ public class HealthBar : MonoBehaviour
     {
         if (curHealth <=0 && Lives3.activeSelf)
         {
+            LivesBar.GetComponent<Animation>().Play();
             Lives3.SetActive(false);
             Lives2.SetActive(true);
             curHealth = 100f;
+            
         }
         if (curHealth <= 0 && Lives2.activeSelf)
         {
+            LivesBar.GetComponent<Animation>().Play();
             Lives2.SetActive(false);
             Lives1.SetActive(true);
             curHealth = 100f;
         }
         if (curHealth <= 0 && Lives1.activeSelf)
         {
+            LivesBar.GetComponent<Animation>().Play();
             Lives1.SetActive(false);
             curHealth = 100f;
         }

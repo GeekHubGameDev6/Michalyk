@@ -6,7 +6,7 @@ public class PlayerHitEnemy : MonoBehaviour
 {
 
     public Rigidbody2D Bullet;
-
+    private int counter;
     void Start()
     {
     }

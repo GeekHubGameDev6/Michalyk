@@ -12,6 +12,12 @@ public class PlayerHitsTheFloor : MonoBehaviour
     public GameObject Lives2;
     public GameObject Lives1;
 
+    public GameObject playerSmoke;
+    public GameObject playerSmokeGray;
+    public GameObject playerSmokeBlack;
+    public GameObject playerSmokeBlackBlack;
+
+
     private float curHealth;
     private GameObject healthbar;
     // Use this for initialization
@@ -34,6 +40,11 @@ public class PlayerHitsTheFloor : MonoBehaviour
             player.GetComponent<Transform>().position = new Vector3(-5.594f, -3.958f);
             Debug.Log("Player killed himself");
             HealthLose();
+            playerSmoke.SetActive(true);
+            playerSmokeGray.SetActive(false);
+            playerSmokeBlack.SetActive(false);
+            playerSmokeBlackBlack.SetActive(false);
+
         }
     }
     void HealthLose()

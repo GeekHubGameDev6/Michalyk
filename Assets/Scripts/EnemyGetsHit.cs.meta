@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 14440b8e47827614b921f6e592d9c168
+timeCreated: 1490043141
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - AI: {fileID: 1006820286877524, guid: d4fa507257683ad4bad68c1b949e51bf, type: 2}
+  - enemySmoke: {instanceID: 0}
+  - enemySmokeHitted: {instanceID: 0}
+  - enemySmokeHitted2: {instanceID: 0}
+  - enemySmokeHitted3: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
