@@ -15,6 +15,8 @@ public class HealthBar : MonoBehaviour
     public float Health = 100f;
     public float curHealth;
 
+    public GameObject PlayerExplosion;
+
     public GameObject LivesBar;
 
     public GameObject Lives3;
@@ -22,7 +24,6 @@ public class HealthBar : MonoBehaviour
     public GameObject Lives1;
 
 
-    private int i = 1;
     // Use this for initialization
     void Start ()
 	{
@@ -50,14 +51,16 @@ public class HealthBar : MonoBehaviour
         curHealth -= 25f;
         float calc_Health = curHealth / Health;
         SetHealthBar(calc_Health);
-        SmokeColourChange();
+        
         HealthLose();
+        SmokeColourChange();
         Debug.Log(curHealth);
         
     }
 
     void PlayerKilled()
     {
+        Explosion();
         SmokeColourChange();
         ship.GetComponent<Transform>().position = new Vector2(-5.27f, -4.27f);
         Debug.Log("Player Killed!");
@@ -120,5 +123,11 @@ public class HealthBar : MonoBehaviour
             SmokeBlack.SetActive(false);
             SmokeBlackBlack.SetActive(true);
         }
+    }
+
+    void Explosion()
+    {
+        var instance = Instantiate(PlayerExplosion, player.GetComponent<Transform>().position, player.transform.rotation);
+        Destroy(instance.gameObject, 2.0f);
     }
 }

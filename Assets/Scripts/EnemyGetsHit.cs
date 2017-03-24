@@ -6,6 +6,9 @@ public class EnemyGetsHit : MonoBehaviour
 {
 
     public GameObject AI;
+
+    public GameObject EnemyExplosion;
+
     public GameObject enemySmoke;
     public GameObject enemySmokeHitted;
     public GameObject enemySmokeHitted2;
@@ -46,7 +49,14 @@ public class EnemyGetsHit : MonoBehaviour
         }
         if (counter == 6)
         {
+            Explosion();
             Destroy(gameObject);
         }
+    }
+
+    void Explosion()
+    {
+        var instance = Instantiate(EnemyExplosion, gameObject.GetComponent<Transform>().position, gameObject.transform.rotation);
+        Destroy(instance.gameObject, 2.0f);
     }
 }
