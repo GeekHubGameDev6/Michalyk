@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyGetsHit : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class EnemyGetsHit : MonoBehaviour
     public GameObject AI;
 
     public GameObject EnemyExplosion;
+
+    public GameObject Score;
 
     public GameObject enemySmoke;
     public GameObject enemySmokeHitted;
@@ -49,6 +53,7 @@ public class EnemyGetsHit : MonoBehaviour
         }
         if (counter == 6)
         {
+            ScoreCalculate();
             Explosion();
             Destroy(gameObject);
         }
@@ -58,5 +63,12 @@ public class EnemyGetsHit : MonoBehaviour
     {
         var instance = Instantiate(EnemyExplosion, gameObject.GetComponent<Transform>().position, gameObject.transform.rotation);
         Destroy(instance.gameObject, 2.0f);
+    }
+
+    void ScoreCalculate()
+    {
+        var i = Convert.ToInt32(Score.GetComponent<Text>().text);
+        i += 10;
+        Score.GetComponent<Text>().text = i.ToString();
     }
 }
