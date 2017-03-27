@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class BulletShoot : MonoBehaviour
 {
+    public AudioSource GunShootSound;
+    public AudioSource ReloadingSound;
+    public AudioSource EmptyLoader;
+
     public GameObject bar1;
     public GameObject bar2;
     public GameObject bar3;
@@ -34,6 +38,7 @@ public class BulletShoot : MonoBehaviour
             Rigidbody2D fire = Instantiate(bullet, transform.position, transform.rotation);
             fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
             Destroy(fire.gameObject, 0.8f);
+            GunShootSound.Play();
 
             if (bar5.activeSelf)
             {
@@ -69,6 +74,7 @@ public class BulletShoot : MonoBehaviour
 
     void timerEnded()
     {
+        ReloadingSound.Play();
         reloading.SetActive(false);
         BWR.SetActive(false);
         TextAnimation.GetComponent<Text>().text = "Ready";
@@ -98,8 +104,9 @@ public class BulletShoot : MonoBehaviour
 	        Rigidbody2D fire = Instantiate(bullet, transform.position, transform.rotation);
 	        fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
             Destroy(fire.gameObject, 0.8f);
+            GunShootSound.Play();
 
-	        if (bar5.activeSelf)
+            if (bar5.activeSelf)
 	        {
                 
                 bar4.SetActive(true);
@@ -137,6 +144,10 @@ public class BulletShoot : MonoBehaviour
 	            TextAnimation.GetComponent<Animation>().Play();
                 AmmoBar.GetComponent<Animation>().Play();
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && reloading.activeSelf)
+        {
+            EmptyLoader.Play();
         }
     }
 }

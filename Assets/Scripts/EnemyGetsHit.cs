@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class EnemyGetsHit : MonoBehaviour
 {
-
     public GameObject AI;
 
     public GameObject EnemyExplosion;

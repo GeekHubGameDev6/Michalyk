@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerHitsTheFloor : MonoBehaviour
 {
+    public AudioSource PlayerExplosion;
+    public AudioSource EngineSound;
+
     public GameObject player;
     public GameObject ship;
 
@@ -33,6 +36,8 @@ public class PlayerHitsTheFloor : MonoBehaviour
     {
         if (coll.gameObject.tag == "Floor")
         {
+            EngineSound.pitch = 0.9f;
+            PlayerExplosion.Play();
             ship.GetComponent<Transform>().position = new Vector2(-5.27f, -4.27f);
             var rotationVector = player.transform.rotation.eulerAngles;
             rotationVector.z = 12.107f;

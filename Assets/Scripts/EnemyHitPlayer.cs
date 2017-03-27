@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHitPlayer: MonoBehaviour {
-
+public class EnemyHitPlayer: MonoBehaviour
+{
     public Rigidbody2D EnemyBullet;
 
     public HealthBar hit;

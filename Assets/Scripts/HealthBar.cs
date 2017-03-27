@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+    public AudioSource EnemyHitsPlayer;
+    public AudioSource EngineSound;
+
     public GameObject Smoke;
     public GameObject SmokeGray;
     public GameObject SmokeBlack;
@@ -27,6 +30,7 @@ public class HealthBar : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
+        EngineSound.Play();
 	    curHealth = Health;
     }
 	
@@ -48,6 +52,8 @@ public class HealthBar : MonoBehaviour
 
     public void DecreaseHealth()
     {
+        EnemyHitsPlayer.Play();
+
         curHealth -= 25f;
         float calc_Health = curHealth / Health;
         SetHealthBar(calc_Health);
@@ -103,6 +109,7 @@ public class HealthBar : MonoBehaviour
     {
         if (curHealth == 100f)
         {
+            EngineSound.pitch = 0.9f;
             Smoke.SetActive(true);
             SmokeGray.SetActive(false);
             SmokeBlack.SetActive(false);
@@ -110,16 +117,19 @@ public class HealthBar : MonoBehaviour
         }
         if (curHealth == 75f)
         {
+            EngineSound.pitch = 0.85f;
             Smoke.SetActive(false);
             SmokeGray.SetActive(true);
         }
         if (curHealth == 50f)
         {
+            EngineSound.pitch = 0.8f;
             SmokeGray.SetActive(false);
             SmokeBlack.SetActive(true);
         }
         if (curHealth == 25f)
         {
+            EngineSound.pitch = 0.7f;
             SmokeBlack.SetActive(false);
             SmokeBlackBlack.SetActive(true);
         }

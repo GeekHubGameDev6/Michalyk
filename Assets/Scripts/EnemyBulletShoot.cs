@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class EnemyBulletShoot : MonoBehaviour
 {
+
+    public AudioSource EnemyShootSound;
+
     public Rigidbody2D EnemyBullet;
     public float speed = 20;
 
@@ -28,6 +31,7 @@ public class EnemyBulletShoot : MonoBehaviour
 
     void timerEnded()
     {
+        EnemyShootSound.Play();
         Rigidbody2D fire = Instantiate(EnemyBullet, transform.position, transform.rotation);
         fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
         Destroy(fire.gameObject, 0.8f);
