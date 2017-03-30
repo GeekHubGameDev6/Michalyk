@@ -27,7 +27,7 @@ public class CountdownTimerHard : MonoBehaviour {
             {
                 flag = false;
                 PointsCalculate();
-                SceneManager.LoadScene("HighScores");
+                SceneManager.LoadScene("HighScoreScene");
             }
         }
     }

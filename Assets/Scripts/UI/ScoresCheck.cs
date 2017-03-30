@@ -31,7 +31,6 @@ public class ScoresCheck : MonoBehaviour
     void Check()
     {
         var ScoreEasy = PlayerPrefs.GetInt("ScoreEasy");
-
         var ScoreEasyTop = PlayerPrefs.GetInt("ScoreEasyTop");
 
         var ScoreMedium = PlayerPrefs.GetInt("ScoreMedium");

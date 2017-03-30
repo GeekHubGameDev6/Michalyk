@@ -42,31 +42,44 @@ public class BulletShoot : MonoBehaviour
 
             if (bar5.activeSelf)
             {
+
                 bar4.SetActive(true);
                 bar5.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar4.activeSelf)
             {
+
                 bar3.SetActive(true);
                 bar4.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar3.activeSelf)
             {
+
                 bar2.SetActive(true);
                 bar3.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar2.activeSelf)
             {
+
                 bar1.SetActive(true);
                 bar2.SetActive(false);
+                AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar1.activeSelf)
             {
+                BWR.SetActive(true);
                 flag = true;
                 bar1.SetActive(false);
                 reloading.SetActive(true);
+                TextAnimation.GetComponent<Text>().text = "Reloading";
+                TextAnimation.GetComponent<Animation>().Play();
+                AmmoBar.GetComponent<Animation>().Play();
             }
-        }
+        
+    }
     }
     void Start () {
 		

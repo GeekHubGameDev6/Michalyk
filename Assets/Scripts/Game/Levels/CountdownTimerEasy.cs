@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CountdownTimerEasy : MonoBehaviour {
-
+public class CountdownTimerEasy : MonoBehaviour
+{
     // Use this for initialization
     public float timeLeft = 10.0f;
 
@@ -27,7 +28,7 @@ public class CountdownTimerEasy : MonoBehaviour {
             {
                 flag = false;
                 PointsCalculate();
-                SceneManager.LoadScene("HighScores");
+                SceneManager.LoadScene("HighScoreScene");
             }
         }
     }
