@@ -10,26 +10,19 @@ public class BulletShoot : MonoBehaviour
     public AudioSource GunShootSound;
     public AudioSource ReloadingSound;
     public AudioSource EmptyLoader;
-
     public GameObject bar1;
     public GameObject bar2;
     public GameObject bar3;
     public GameObject bar4;
     public GameObject bar5;
-
     public GameObject BWR;
-
     public GameObject reloading;
-
     public Text TextAnimation;
     public GameObject AmmoBar;
-
     public Rigidbody2D bullet;
     public float speed = 1;
-    public Button Fire;
-
     public float ReloadTimer = 4.0f;
-    private bool flag = false;
+    private bool flag;
 
     public void Shoot()
     {
@@ -39,31 +32,26 @@ public class BulletShoot : MonoBehaviour
             fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
             Destroy(fire.gameObject, 0.8f);
             GunShootSound.Play();
-
             if (bar5.activeSelf)
             {
-
                 bar4.SetActive(true);
                 bar5.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar4.activeSelf)
             {
-
                 bar3.SetActive(true);
                 bar4.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar3.activeSelf)
             {
-
                 bar2.SetActive(true);
                 bar3.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar2.activeSelf)
             {
-
                 bar1.SetActive(true);
                 bar2.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();
@@ -78,13 +66,12 @@ public class BulletShoot : MonoBehaviour
                 TextAnimation.GetComponent<Animation>().Play();
                 AmmoBar.GetComponent<Animation>().Play();
             }
-        
+        }
+        else if (reloading.activeSelf)
+        {
+            EmptyLoader.Play();
+        }
     }
-    }
-    void Start () {
-		
-	}
-
     void timerEnded()
     {
         ReloadingSound.Play();
@@ -109,8 +96,6 @@ public class BulletShoot : MonoBehaviour
             }
         }
     }
-
-    // Update is called once per frame
     void Update () {
 	    if (Input.GetKeyDown(KeyCode.Space) && reloading.activeSelf == false)
 	    {
@@ -118,31 +103,26 @@ public class BulletShoot : MonoBehaviour
 	        fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
             Destroy(fire.gameObject, 0.8f);
             GunShootSound.Play();
-
             if (bar5.activeSelf)
 	        {
-                
                 bar4.SetActive(true);
                 bar5.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar4.activeSelf)
             {
-                
                 bar3.SetActive(true);
                 bar4.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar3.activeSelf)
             {
-                
                 bar2.SetActive(true);
                 bar3.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();
             }
             else if (bar2.activeSelf)
             {
-                
                 bar1.SetActive(true);
                 bar2.SetActive(false);
                 AmmoBar.GetComponent<Animation>().Play();

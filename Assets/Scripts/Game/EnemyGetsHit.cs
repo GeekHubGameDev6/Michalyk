@@ -6,26 +6,14 @@ using UnityEngine.UI;
 
 public class EnemyGetsHit : MonoBehaviour
 {
-    public GameObject AI;
-
     public GameObject EnemyExplosion;
-
     public GameObject Score;
-
     public GameObject enemySmoke;
     public GameObject enemySmokeHitted;
     public GameObject enemySmokeHitted2;
     public GameObject enemySmokeHitted3;
     private int counter;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "bullet")

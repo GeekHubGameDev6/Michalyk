@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyBulletShoot : MonoBehaviour
+public class EnemyBulletShootMedium : MonoBehaviour
 {
 
     public AudioSource EnemyShootSound;
 
-    public Rigidbody2D EnemyBullet;
+    public Rigidbody2D EnemyBulletMedium;
     public float speed = 20;
 
     public float timer = 4.0f;
@@ -32,7 +32,7 @@ public class EnemyBulletShoot : MonoBehaviour
     void timerEnded()
     {
         EnemyShootSound.Play();
-        Rigidbody2D fire = Instantiate(EnemyBullet, transform.position, transform.rotation);
+        Rigidbody2D fire = Instantiate(EnemyBulletMedium, transform.position, transform.rotation);
         fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
         Destroy(fire.gameObject, 0.8f);
         timer = Random.Range(3.0f,5.0f);

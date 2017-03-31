@@ -13,13 +13,6 @@ public class LevelSelector : MonoBehaviour
     public Button MediumLevel;
     public Button HardLevel;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         ReturnButton.onClick.AddListener(ReturnToMenu);
@@ -48,11 +41,9 @@ public class LevelSelector : MonoBehaviour
         MainMenu.SetActive(true);
         LevelSelection.SetActive(false);
     }
-
     IEnumerator EasyLoad()
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync("GameEasy", LoadSceneMode.Single);
-
         while (!ao.isDone)
         {
             if (ao.progress == 0.9f)
@@ -65,7 +56,6 @@ public class LevelSelector : MonoBehaviour
     IEnumerator MediumLoad()
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync("GameMedium", LoadSceneMode.Single);
-
         while (!ao.isDone)
         {
             if (ao.progress == 0.9f)
@@ -78,7 +68,6 @@ public class LevelSelector : MonoBehaviour
     IEnumerator HardLoad()
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync("GameHard", LoadSceneMode.Single);
-
         while (!ao.isDone)
         {
             if (ao.progress == 0.9f)

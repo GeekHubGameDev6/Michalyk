@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerHitsTheFloor : MonoBehaviour
+public class PlayerHitsTheFloorEasy : MonoBehaviour
 {
     public Text Points;
 
@@ -59,26 +59,26 @@ public class PlayerHitsTheFloor : MonoBehaviour
     }
     void HealthLose()
     {
-        healthbar = GameObject.Find("Player").GetComponent<HealthBar>().healthbar;
+        healthbar = GameObject.Find("Player").GetComponent<HealthBarEasy>().healthbar;
         Vector3 Coords = new Vector3(1f, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
 
         if (Lives3.activeSelf)
         {
-            GameObject.Find("Player").GetComponent<HealthBar>().curHealth = 100f;
+            GameObject.Find("Player").GetComponent<HealthBarEasy>().curHealth = 100f;
             healthbar.transform.localScale = Coords;
             Lives3.SetActive(false);
             Lives2.SetActive(true);
         }
         else if (Lives2.activeSelf)
         {
-            GameObject.Find("Player").GetComponent<HealthBar>().curHealth = 100f;
+            GameObject.Find("Player").GetComponent<HealthBarEasy>().curHealth = 100f;
             healthbar.transform.localScale = Coords;
             Lives2.SetActive(false);
             Lives1.SetActive(true);
         }
         else if (Lives1.activeSelf)
         {
-            GameObject.Find("Player").GetComponent<HealthBar>().curHealth = 100f;
+            GameObject.Find("Player").GetComponent<HealthBarEasy>().curHealth = 100f;
             healthbar.transform.localScale = Coords;
             Lives1.SetActive(false);
         }

@@ -6,17 +6,10 @@ using UnityEngine;
 public class SpawnAI : MonoBehaviour
 {
     public Rigidbody2D SpawnEnemy;
-
     private bool flag = true;
     public int EnemyAmount;
-
     private GameObject[] target;
 
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (flag)
