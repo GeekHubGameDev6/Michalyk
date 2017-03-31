@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHitsTheFloor : MonoBehaviour
 {
+    public Text Points;
+
     public AudioSource PlayerExplosion;
     public AudioSource EngineSound;
 
@@ -79,7 +84,36 @@ public class PlayerHitsTheFloor : MonoBehaviour
         }
         else if (Lives1.activeSelf == false)
         {
-            Debug.Log("Game Over");
+            PointsCalculate();
+            StartCoroutine("SceneLoad");
+            //Debug.Log("Game Over");
+        }
+    }
+    void PointsCalculate()
+    {
+        var Score = Convert.ToInt32(Points.text);
+        PlayerPrefs.SetInt("ScoreEasy", Score);
+        var ScoreEasyTop = PlayerPrefs.GetInt("ScoreEasyTop");
+
+        if (Score > ScoreEasyTop)
+        {
+            PlayerPrefs.SetInt("ScoreEasyTop", Score);
+        }
+        PlayerPrefs.Save();
+    }
+
+    IEnumerator SceneLoad()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
+
+        while (!ao.isDone)
+        {
+            if (ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+
+            yield return null;
         }
     }
 }

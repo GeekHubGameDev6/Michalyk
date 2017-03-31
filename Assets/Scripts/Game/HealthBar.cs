@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
@@ -26,11 +29,12 @@ public class HealthBar : MonoBehaviour
     public GameObject Lives2;
     public GameObject Lives1;
 
+    public Text Points;
 
     // Use this for initialization
     void Start ()
 	{
-        EngineSound.Play();
+        EngineSound.PlayDelayed(1f);
 	    curHealth = Health;
     }
 	
@@ -101,7 +105,9 @@ public class HealthBar : MonoBehaviour
         }
         if (curHealth <= 0 && Lives1.activeSelf==false)
         {
-            Debug.Log("Game Over");
+            PointsCalculate();
+            StartCoroutine("SceneLoad");
+            //Debug.Log("Game Over");
         }
     }
 
@@ -139,5 +145,33 @@ public class HealthBar : MonoBehaviour
     {
         var instance = Instantiate(PlayerExplosion, player.GetComponent<Transform>().position, player.transform.rotation);
         Destroy(instance.gameObject, 2.0f);
+    }
+
+    void PointsCalculate()
+    {
+        var Score = Convert.ToInt32(Points.text);
+        PlayerPrefs.SetInt("ScoreEasy", Score);
+        var ScoreEasyTop = PlayerPrefs.GetInt("ScoreEasyTop");
+
+        if (Score > ScoreEasyTop)
+        {
+            PlayerPrefs.SetInt("ScoreEasyTop", Score);
+        }
+        PlayerPrefs.Save();
+    }
+
+    IEnumerator SceneLoad()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
+
+        while (!ao.isDone)
+        {
+            if (ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
     }
 }

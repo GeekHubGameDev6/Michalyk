@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuSelector : MonoBehaviour {
-
+public class MainMenuSelector : MonoBehaviour
+{
+    public AudioSource Sound;
     public GameObject LevelSelection;
     public GameObject MainMenu;
 
@@ -13,14 +14,15 @@ public class MainMenuSelector : MonoBehaviour {
     public Button HighscoresButton;
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        
+        HighscoresButton.onClick.AddListener(HighScoresLoad);
+    }
 	
 	// Update is called once per frame
 	void Update () {
         StartGameButton.onClick.AddListener(GoToSelectLevel);
-        HighscoresButton.onClick.AddListener(GoToHighScores);
     }
 
     void GoToSelectLevel()
@@ -29,8 +31,22 @@ public class MainMenuSelector : MonoBehaviour {
         MainMenu.SetActive(false);
     }
 
-    void GoToHighScores()
+    void HighScoresLoad()
     {
-        SceneManager.LoadScene("HighScoreScene");
+        Sound.Stop();
+        StartCoroutine("GoToHighScores");
+    }
+
+
+    IEnumerator GoToHighScores()
+    {
+        AsyncOperation AO = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Additive);
+        
+        while (AO.progress < 0.9f)
+        {
+            AO.allowSceneActivation = false;
+            yield return null;
+        }
+        AO.allowSceneActivation = true;
     }
 }

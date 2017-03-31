@@ -14,33 +14,79 @@ public class LevelSelector : MonoBehaviour
     public Button HardLevel;
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         ReturnButton.onClick.AddListener(ReturnToMenu);
         EasyLevel.onClick.AddListener(LoadEasyLevel);
         MediumLevel.onClick.AddListener(LoadMediumLevel);
         HardLevel.onClick.AddListener(LoadHardLevel);
     }
+
     void LoadEasyLevel()
     {
-        SceneManager.LoadScene("GameEasy");
+        StartCoroutine("EasyLoad");
     }
+
     void LoadMediumLevel()
     {
-        SceneManager.LoadScene("GameMedium");
+        StartCoroutine("MediumLoad");
     }
+
     void LoadHardLevel()
     {
-        SceneManager.LoadScene("GameHard");
+        StartCoroutine("HardLoad");
     }
+
     void ReturnToMenu()
     {
         MainMenu.SetActive(true);
         LevelSelection.SetActive(false);
     }
+
+    IEnumerator EasyLoad()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("GameEasy", LoadSceneMode.Single);
+
+        while (!ao.isDone)
+        {
+            if (ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+    }
+    IEnumerator MediumLoad()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("GameMedium", LoadSceneMode.Single);
+
+        while (!ao.isDone)
+        {
+            if (ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+    }
+    IEnumerator HardLoad()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("GameHard", LoadSceneMode.Single);
+
+        while (!ao.isDone)
+        {
+            if (ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+    }
+
 }

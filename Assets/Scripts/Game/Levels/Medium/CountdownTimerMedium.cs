@@ -27,7 +27,7 @@ public class CountdownTimerMedium : MonoBehaviour {
             {
                 flag = false;
                 PointsCalculate();
-                SceneManager.LoadScene("HighScoreScene");
+                Loader();
             }
         }
     }
@@ -43,5 +43,25 @@ public class CountdownTimerMedium : MonoBehaviour {
             PlayerPrefs.SetInt("ScoreMediumTop", Score);
         }
         PlayerPrefs.Save();
+    }
+
+    void Loader()
+    {
+        StartCoroutine("SceneLoad");
+    }
+
+    IEnumerator SceneLoad()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
+
+        while (!ao.isDone)
+        {
+            if (ao.progress == 0.9f)
+            {
+                ao.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
     }
 }
