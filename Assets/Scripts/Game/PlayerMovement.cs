@@ -15,11 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public float ForceStrength;
 
     public bool isPressed = false;
-    public bool isNotePressed = false;
+    public bool isNotPressed = false;
     void Start()
     {
     }
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (isPressed)
@@ -30,10 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
         else if (!isPressed)
         {
-
             //nothing
         }
-
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
