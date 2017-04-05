@@ -1,24 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
 using UnityEngine;
-using UnityEngine.UI;
+
+#endregion
 
 public class EnemyBulletShootHard : MonoBehaviour
 {
+    public Rigidbody2D EnemyBulletHard;
 
     public AudioSource EnemyShootSound;
-
-    public Rigidbody2D EnemyBulletHard;
+    private bool flag = true;
     public float speed = 20;
 
     public float timer = 4.0f;
-    private bool flag = true;
 
-    void Start () {
-		
-	}
+    private void Start()
+    {
+    }
 
-	void FixedUpdate ()
+    private void FixedUpdate()
     {
         timer -= Time.deltaTime;
 
@@ -29,13 +29,13 @@ public class EnemyBulletShootHard : MonoBehaviour
         }
     }
 
-    void timerEnded()
+    private void timerEnded()
     {
         EnemyShootSound.Play();
-        Rigidbody2D fire = Instantiate(EnemyBulletHard, transform.position, transform.rotation);
+        var fire = Instantiate(EnemyBulletHard, transform.position, transform.rotation);
         fire.velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
         Destroy(fire.gameObject, 0.8f);
-        timer = Random.Range(3.0f,5.0f);
+        timer = Random.Range(3.0f, 5.0f);
         flag = true;
     }
 }

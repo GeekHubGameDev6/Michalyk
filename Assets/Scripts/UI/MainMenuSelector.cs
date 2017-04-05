@@ -1,37 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+#endregion
+
 public class MainMenuSelector : MonoBehaviour
 {
-    public AudioSource Sound;
+    public AudioSource Click;
+    public Button HighscoresButton;
     public GameObject LevelSelection;
     public GameObject MainMenu;
+    public AudioSource Sound;
     public Button StartGameButton;
-    public Button HighscoresButton;
 
-    void Start ()
+    private void Start()
     {
         HighscoresButton.onClick.AddListener(HighScoresLoad);
-    }
-	void Update () {
         StartGameButton.onClick.AddListener(GoToSelectLevel);
     }
-    void GoToSelectLevel()
+
+    private void GoToSelectLevel()
     {
+        Click.Play();
         LevelSelection.SetActive(true);
         MainMenu.SetActive(false);
     }
-    void HighScoresLoad()
+
+    private void HighScoresLoad()
     {
+        Click.Play();
         Sound.Stop();
         StartCoroutine("GoToHighScores");
     }
-    IEnumerator GoToHighScores()
+
+    private IEnumerator GoToHighScores()
     {
-        AsyncOperation AO = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Additive);
+        var AO = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Additive);
         while (AO.progress < 0.9f)
         {
             AO.allowSceneActivation = false;

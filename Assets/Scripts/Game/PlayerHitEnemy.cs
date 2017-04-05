@@ -1,27 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
 using UnityEngine;
+
+#endregion
 
 public class PlayerHitEnemy : MonoBehaviour
 {
     public Rigidbody2D Bullet;
     private int counter;
-    void OnTriggerEnter2D(Collider2D coll)
+
+    private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "enemy")
-        {
             Destroy(Bullet.gameObject);
-        }
-        if(coll.gameObject.tag == "Wall")
-        {
+        if (coll.gameObject.tag == "Wall")
             Destroy(Bullet.gameObject);
-        }
     }
-    void OnCollisionEnter2D(Collision2D coll)
+
+    private void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Wall")
-        {
             Destroy(Bullet.gameObject);
-        }
     }
 }

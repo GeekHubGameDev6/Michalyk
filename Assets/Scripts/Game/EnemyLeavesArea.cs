@@ -1,27 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+#endregion
+
 public class EnemyLeavesArea : MonoBehaviour
 {
-
     public GameObject ScoreText;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnTriggerExit2D(Collider2D coll)
+    private void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "enemy")
         {
@@ -35,7 +24,6 @@ public class EnemyLeavesArea : MonoBehaviour
             {
                 ScoreText.GetComponent<Text>().text = "0";
             }
-            
         }
     }
 }

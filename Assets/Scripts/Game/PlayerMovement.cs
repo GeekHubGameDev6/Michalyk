@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+
+#endregion
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float ForceStrength;
+    public bool isNotPressed = false;
+
+    public bool isPressed;
 
     public GameObject player;
 
-    private int RotSpeed = 150;
+    private readonly int RotSpeed = 150;
 
-    public float ForceStrength;
-
-    public bool isPressed = false;
-    public bool isNotPressed = false;
-    void Start()
+    private void Start()
     {
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         if (isPressed)
         {
@@ -39,24 +39,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
             player.GetComponent<Rigidbody2D>().AddRelativeForce(-Vector2.right * 0.2f, ForceMode2D.Force);
-        }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.acceleration.x < -0.15)
-        {
             player.transform.Rotate(Vector3.forward * RotSpeed * Time.deltaTime);
-        }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.acceleration.x > 0.15)
-        {
             player.transform.Rotate(-Vector3.forward * RotSpeed * Time.deltaTime);
-        }
     }
+
     public void onPointerDownButton()
     {
         isPressed = true;
     }
+
     public void onPointerUpButton()
     {
         isPressed = false;

@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+﻿#region
+
 using UnityEngine;
+
+#endregion
 
 public class SpawnAI : MonoBehaviour
 {
-    public Rigidbody2D SpawnEnemy;
-    private bool flag = true;
     public int EnemyAmount;
+    private bool flag = true;
+    public Rigidbody2D SpawnEnemy;
     private GameObject[] target;
 
-    void Update()
+    private void Update()
     {
         if (flag)
         {
@@ -20,13 +21,13 @@ public class SpawnAI : MonoBehaviour
                 var x = Random.Range(9f, 20f);
                 var y = Random.Range(-4f, 4f);
                 var position = new Vector3(x, y, 0);
-                Rigidbody2D spawn = Instantiate(SpawnEnemy, position, transform.rotation);
+                var spawn = Instantiate(SpawnEnemy, position, transform.rotation);
                 spawn.velocity = transform.TransformDirection(new Vector3(0, 0, 0));
             }
         }
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "enemyTRIGGER")
         {
@@ -35,7 +36,7 @@ public class SpawnAI : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D coll)
+    private void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "enemyTRIGGER")
         {
@@ -44,4 +45,3 @@ public class SpawnAI : MonoBehaviour
         }
     }
 }
-

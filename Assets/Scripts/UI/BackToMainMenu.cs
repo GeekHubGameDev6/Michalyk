@@ -1,26 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+#endregion
+
 public class BackToMainMenu : MonoBehaviour
 {
-    public AudioSource Sound;
     public Button BackButton;
-    void Start()
+    public AudioSource Sound;
+
+    private void Start()
     {
         Sound.Play();
         BackButton.onClick.AddListener(Load);
     }
-    void Load()
+
+    private void Load()
     {
         Sound.Stop();
         StartCoroutine("LoadMenu");
     }
-    IEnumerator LoadMenu()
+
+    private IEnumerator LoadMenu()
     {
-        AsyncOperation AO = SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Single);
+        var AO = SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Single);
         while (AO.progress < 0.9f)
         {
             AO.allowSceneActivation = false;

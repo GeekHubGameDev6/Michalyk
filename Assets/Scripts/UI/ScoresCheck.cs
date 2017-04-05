@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
 using UnityEngine;
 using UnityEngine.UI;
+
+#endregion
 
 public class ScoresCheck : MonoBehaviour
 {
     public Text EasyTopScore;
     public Text EasyYourScore;
-    public Text MediumTopScore;
-    public Text MediumYourScore;
     public Text HardTopScore;
     public Text HardYourScore;
+    public Text MediumTopScore;
+    public Text MediumYourScore;
 
-    void Start ()
+    private void Start()
     {
         Check();
     }
-    void Check()
+
+    private void Check()
     {
         var ScoreEasy = PlayerPrefs.GetInt("ScoreEasy");
         var ScoreEasyTop = PlayerPrefs.GetInt("ScoreEasyTop");

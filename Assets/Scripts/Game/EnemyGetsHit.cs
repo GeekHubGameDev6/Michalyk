@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+#endregion
+
 public class EnemyGetsHit : MonoBehaviour
 {
+    private int counter;
     public GameObject EnemyExplosion;
-    public GameObject Score;
     public GameObject enemySmoke;
     public GameObject enemySmokeHitted;
     public GameObject enemySmokeHitted2;
     public GameObject enemySmokeHitted3;
-    private int counter;
+    public GameObject Score;
 
-    void OnTriggerEnter2D(Collider2D coll)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "bullet")
-        {
             counter += 1;
-        }
 
         if (counter == 3)
         {
@@ -46,13 +46,14 @@ public class EnemyGetsHit : MonoBehaviour
         }
     }
 
-    void Explosion()
+    private void Explosion()
     {
-        var instance = Instantiate(EnemyExplosion, gameObject.GetComponent<Transform>().position, gameObject.transform.rotation);
+        var instance = Instantiate(EnemyExplosion, gameObject.GetComponent<Transform>().position,
+            gameObject.transform.rotation);
         Destroy(instance.gameObject, 2.0f);
     }
 
-    void ScoreCalculate()
+    private void ScoreCalculate()
     {
         var i = Convert.ToInt32(Score.GetComponent<Text>().text);
         i += 10;

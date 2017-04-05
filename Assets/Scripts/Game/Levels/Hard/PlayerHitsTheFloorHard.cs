@@ -1,29 +1,31 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+#endregion
+
 public class PlayerHitsTheFloorHard : MonoBehaviour
 {
-    public Text Points;
-    public AudioSource PlayerExplosion;
+    private float curHealth;
     public AudioSource EngineSound;
-    public GameObject player;
-    public GameObject ship;
-    public GameObject Lives3;
-    public GameObject Lives2;
+    private GameObject healthbar;
     public GameObject Lives1;
+    public GameObject Lives2;
+    public GameObject Lives3;
+    public GameObject player;
+    public AudioSource PlayerExplosion;
     public GameObject playerSmoke;
-    public GameObject playerSmokeGray;
     public GameObject playerSmokeBlack;
     public GameObject playerSmokeBlackBlack;
-    private float curHealth;
-    private GameObject healthbar;
+    public GameObject playerSmokeGray;
+    public Text Points;
+    public GameObject ship;
 
-    void OnCollisionEnter2D(Collision2D coll)
+    private void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Floor")
         {
@@ -41,10 +43,11 @@ public class PlayerHitsTheFloorHard : MonoBehaviour
             playerSmokeBlackBlack.SetActive(false);
         }
     }
-    void HealthLose()
+
+    private void HealthLose()
     {
         healthbar = GameObject.Find("Player").GetComponent<HealthBarHard>().healthbar;
-        Vector3 Coords = new Vector3(1f, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
+        var Coords = new Vector3(1f, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
         if (Lives3.activeSelf)
         {
             GameObject.Find("Player").GetComponent<HealthBarHard>().curHealth = 100f;
@@ -71,27 +74,24 @@ public class PlayerHitsTheFloorHard : MonoBehaviour
             StartCoroutine("SceneLoad");
         }
     }
-    void PointsCalculate()
+
+    private void PointsCalculate()
     {
         var Score = Convert.ToInt32(Points.text);
         PlayerPrefs.SetInt("ScoreHard", Score);
         var ScoreEasyTop = PlayerPrefs.GetInt("ScoreHardTop");
         if (Score > ScoreEasyTop)
-        {
             PlayerPrefs.SetInt("ScoreHardTop", Score);
-        }
         PlayerPrefs.Save();
     }
 
-    IEnumerator SceneLoad()
+    private IEnumerator SceneLoad()
     {
-        AsyncOperation ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
+        var ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
         while (!ao.isDone)
         {
             if (ao.progress == 0.9f)
-            {
                 ao.allowSceneActivation = true;
-            }
             yield return null;
         }
     }

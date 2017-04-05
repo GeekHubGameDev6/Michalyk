@@ -1,43 +1,42 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+#endregion
+
 public class PlayerHitsTheFloorEasy : MonoBehaviour
 {
-    public Text Points;
-
-    public AudioSource PlayerExplosion;
+    private float curHealth;
     public AudioSource EngineSound;
-
-    public GameObject player;
-    public GameObject ship;
-
-    public GameObject Lives3;
-    public GameObject Lives2;
+    private GameObject healthbar;
     public GameObject Lives1;
-
+    public GameObject Lives2;
+    public GameObject Lives3;
+    public GameObject player;
+    public AudioSource PlayerExplosion;
     public GameObject playerSmoke;
-    public GameObject playerSmokeGray;
     public GameObject playerSmokeBlack;
     public GameObject playerSmokeBlackBlack;
+    public GameObject playerSmokeGray;
+    public Text Points;
 
+    public GameObject ship;
 
-    private float curHealth;
-    private GameObject healthbar;
     // Use this for initialization
-    void Start ()
+    private void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-    void OnCollisionEnter2D(Collision2D coll)
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Floor")
         {
@@ -54,13 +53,13 @@ public class PlayerHitsTheFloorEasy : MonoBehaviour
             playerSmokeGray.SetActive(false);
             playerSmokeBlack.SetActive(false);
             playerSmokeBlackBlack.SetActive(false);
-
         }
     }
-    void HealthLose()
+
+    private void HealthLose()
     {
         healthbar = GameObject.Find("Player").GetComponent<HealthBarEasy>().healthbar;
-        Vector3 Coords = new Vector3(1f, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
+        var Coords = new Vector3(1f, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
 
         if (Lives3.activeSelf)
         {
@@ -89,29 +88,26 @@ public class PlayerHitsTheFloorEasy : MonoBehaviour
             //Debug.Log("Game Over");
         }
     }
-    void PointsCalculate()
+
+    private void PointsCalculate()
     {
         var Score = Convert.ToInt32(Points.text);
         PlayerPrefs.SetInt("ScoreEasy", Score);
         var ScoreEasyTop = PlayerPrefs.GetInt("ScoreEasyTop");
 
         if (Score > ScoreEasyTop)
-        {
             PlayerPrefs.SetInt("ScoreEasyTop", Score);
-        }
         PlayerPrefs.Save();
     }
 
-    IEnumerator SceneLoad()
+    private IEnumerator SceneLoad()
     {
-        AsyncOperation ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
+        var ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
 
         while (!ao.isDone)
         {
             if (ao.progress == 0.9f)
-            {
                 ao.allowSceneActivation = true;
-            }
 
             yield return null;
         }

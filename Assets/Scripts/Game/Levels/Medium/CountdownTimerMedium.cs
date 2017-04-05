@@ -1,22 +1,25 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CountdownTimerMedium : MonoBehaviour {
+#endregion
+
+public class CountdownTimerMedium : MonoBehaviour
+{
+    private bool flag = true;
+
+    public Text Points;
 
     // Use this for initialization
     public float timeLeft = 10.0f;
 
     public Text TimerText;
 
-    public Text Points;
-
-    private bool flag = true;
-
-    void Update()
+    private void Update()
     {
         if (flag)
         {
@@ -32,34 +35,30 @@ public class CountdownTimerMedium : MonoBehaviour {
         }
     }
 
-    void PointsCalculate()
+    private void PointsCalculate()
     {
         var Score = Convert.ToInt32(Points.text);
         PlayerPrefs.SetInt("ScoreMedium", Score);
         var ScoreMediumTop = PlayerPrefs.GetInt("ScoreMediumTop");
 
         if (Score > ScoreMediumTop)
-        {
             PlayerPrefs.SetInt("ScoreMediumTop", Score);
-        }
         PlayerPrefs.Save();
     }
 
-    void Loader()
+    private void Loader()
     {
         StartCoroutine("SceneLoad");
     }
 
-    IEnumerator SceneLoad()
+    private IEnumerator SceneLoad()
     {
-        AsyncOperation ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
+        var ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
 
         while (!ao.isDone)
         {
             if (ao.progress == 0.9f)
-            {
                 ao.allowSceneActivation = true;
-            }
 
             yield return null;
         }

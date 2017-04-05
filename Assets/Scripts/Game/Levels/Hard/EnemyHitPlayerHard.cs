@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#region
+
 using UnityEngine;
 
-public class EnemyHitPlayerHard: MonoBehaviour
+#endregion
+
+public class EnemyHitPlayerHard : MonoBehaviour
 {
     public Rigidbody2D EnemyBullet;
     public HealthBarHard hit;
-    void OnCollisionEnter2D(Collision2D coll)
+
+    private void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
         {
@@ -14,8 +17,6 @@ public class EnemyHitPlayerHard: MonoBehaviour
             hit.DecreaseHealth();
         }
         if (coll.gameObject.tag == "Wall")
-        {
             Destroy(EnemyBullet.gameObject);
-        }
     }
 }
