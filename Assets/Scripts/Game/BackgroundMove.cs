@@ -10,7 +10,7 @@ public class BackgroundMove : MonoBehaviour
     public GameObject player;
     public float speedMultiplier = 0.3f;
 
-    private void Update()
+    private void FixedUpdate()
     {
         var y = -player.GetComponent<Transform>().localPosition.y + 0.1f;
         var x = background.GetComponent<Transform>().localPosition.x;
