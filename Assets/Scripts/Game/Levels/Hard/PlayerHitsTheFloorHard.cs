@@ -27,7 +27,7 @@ public class PlayerHitsTheFloorHard : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Floor")
+        if (coll.gameObject.CompareTag("Floor"))
         {
             EngineSound.pitch = 0.9f;
             PlayerExplosion.Play();

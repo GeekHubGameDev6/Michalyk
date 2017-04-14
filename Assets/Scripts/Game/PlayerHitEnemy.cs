@@ -11,15 +11,15 @@ public class PlayerHitEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "enemy")
+        if (coll.gameObject.CompareTag("enemy"))
             Destroy(Bullet.gameObject);
-        if (coll.gameObject.tag == "Wall")
+        if (coll.gameObject.CompareTag("Wall"))
             Destroy(Bullet.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Wall")
+        if (coll.gameObject.CompareTag("Wall"))
             Destroy(Bullet.gameObject);
     }
 }

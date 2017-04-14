@@ -18,7 +18,7 @@ public class EnemyGetsHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "bullet")
+        if (coll.gameObject.CompareTag("bullet"))
             counter += 1;
 
         if (counter == 3)

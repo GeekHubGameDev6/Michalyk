@@ -14,10 +14,6 @@ public class EnemyBulletShootHard : MonoBehaviour
 
     public float timer = 4.0f;
 
-    private void Start()
-    {
-    }
-
     private void FixedUpdate()
     {
         timer -= Time.deltaTime;

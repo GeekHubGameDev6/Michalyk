@@ -12,7 +12,7 @@ public class EnemyLeavesArea : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "enemy")
+        if (coll.gameObject.CompareTag("enemy"))
         {
             var i = Convert.ToInt32(ScoreText.GetComponent<Text>().text);
             if (i != 0)

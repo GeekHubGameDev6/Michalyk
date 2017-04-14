@@ -26,19 +26,9 @@ public class PlayerHitsTheFloorEasy : MonoBehaviour
 
     public GameObject ship;
 
-    // Use this for initialization
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Floor")
+        if (coll.gameObject.CompareTag("Floor"))
         {
             EngineSound.pitch = 0.9f;
             PlayerExplosion.Play();

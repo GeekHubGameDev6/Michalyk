@@ -29,7 +29,7 @@ public class SpawnAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "enemyTRIGGER")
+        if (coll.gameObject.CompareTag("enemyTRIGGER"))
         {
             Destroy(SpawnEnemy.gameObject);
             flag = false;
@@ -38,7 +38,7 @@ public class SpawnAI : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "enemyTRIGGER")
+        if (coll.gameObject.CompareTag("enemyTRIGGER"))
         {
             Destroy(SpawnEnemy.gameObject);
             flag = true;
