@@ -34,6 +34,21 @@ public class HealthBarEasy : MonoBehaviour
         curHealth = Health;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                StartCoroutine("DestroyLevel");
+            }
+            else
+            {
+                StartCoroutine("DestroyLevel");
+            }
+        }
+    }
+
     private void SetHealthBar(float myHealth)
     {
         healthbar.transform.localScale = new Vector3(Mathf.Clamp(myHealth, 0f, 1f), healthbar.transform.localScale.y,
@@ -146,6 +161,17 @@ public class HealthBarEasy : MonoBehaviour
     private IEnumerator SceneLoad()
     {
         var ao = SceneManager.LoadSceneAsync("HighScoreScene", LoadSceneMode.Single);
+        while (!ao.isDone)
+        {
+            if (ao.progress == 0.9f)
+                ao.allowSceneActivation = true;
+            yield return null;
+        }
+    }
+
+    private IEnumerator DestroyLevel()
+    {
+        var ao = SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Single);
         while (!ao.isDone)
         {
             if (ao.progress == 0.9f)

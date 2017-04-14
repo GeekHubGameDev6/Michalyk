@@ -18,6 +18,23 @@ public class BackToMainMenu : MonoBehaviour
         BackButton.onClick.AddListener(Load);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                Sound.Stop();
+                StartCoroutine("LoadMenu");
+            }
+            else
+            {
+                Sound.Stop();
+                StartCoroutine("LoadMenu");
+            }
+        }
+    }
+
     private void Load()
     {
         Sound.Stop();
