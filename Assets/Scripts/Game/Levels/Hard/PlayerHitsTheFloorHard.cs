@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class PlayerHitsTheFloorHard : MonoBehaviour
 {
+    public GameObject LivesBar;
     private float curHealth;
     public AudioSource EngineSound;
     private GameObject healthbar;
@@ -29,6 +30,7 @@ public class PlayerHitsTheFloorHard : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Floor"))
         {
+            LivesBar.GetComponent<Animation>().Play();
             EngineSound.pitch = 0.9f;
             PlayerExplosion.Play();
             ship.GetComponent<Transform>().position = new Vector2(-5.27f, -4.27f);

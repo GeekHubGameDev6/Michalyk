@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class PlayerHitsTheFloorEasy : MonoBehaviour
 {
+    public GameObject LivesBar;
     private float curHealth;
     public AudioSource EngineSound;
     private GameObject healthbar;
@@ -30,6 +31,7 @@ public class PlayerHitsTheFloorEasy : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Floor"))
         {
+            LivesBar.GetComponent<Animation>().Play();
             EngineSound.pitch = 0.9f;
             PlayerExplosion.Play();
             ship.GetComponent<Transform>().position = new Vector2(-5.27f, -4.27f);
@@ -37,7 +39,6 @@ public class PlayerHitsTheFloorEasy : MonoBehaviour
             rotationVector.z = 12.107f;
             player.transform.rotation = Quaternion.Euler(rotationVector);
             player.GetComponent<Transform>().position = new Vector3(-5.594f, -3.958f);
-            Debug.Log("Player killed himself");
             HealthLose();
             playerSmoke.SetActive(true);
             playerSmokeGray.SetActive(false);
@@ -75,7 +76,6 @@ public class PlayerHitsTheFloorEasy : MonoBehaviour
         {
             PointsCalculate();
             StartCoroutine("SceneLoad");
-            //Debug.Log("Game Over");
         }
     }
 
